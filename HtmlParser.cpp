@@ -11,7 +11,7 @@ HtmlParser::HtmlParser(){
     }
 
     //定义转移数组
-    transitionTable = {
+    transitionTable = vector<vector<int> >{
     /*           0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 */
     /*           <  a  A  h  H  r  R  e  E  f  F  =     "  '  /  #  >  -  ! other */
     /*0结点*/    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

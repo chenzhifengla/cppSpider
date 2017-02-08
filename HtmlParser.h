@@ -13,8 +13,7 @@ using namespace std;
 using state = int;
 //定义转移条件
 using condition = int;
-//定义自动机结构体
-using stateMachine = struct{state current; };
+
 
 class HtmlParser {
 public:
@@ -30,6 +29,9 @@ private:
     string content;
     string link;
     queue<Url> urls;
+
+    //定义自动机结构体
+    using stateMachine = struct{state current; };
 
     //定义最大状态数
     static const int STATENUM = 24;
