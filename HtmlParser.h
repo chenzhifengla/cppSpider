@@ -6,10 +6,11 @@
 #define CPPSPIDER_HTMLPARSER_H
 #include <string>
 #include <queue>
+#include <regex.h>
 #include "Page.h"
 using namespace std;
 
-//定义结点状态
+/*//定义结点状态
 using state = int;
 //定义转移条件
 using condition = int;
@@ -50,6 +51,24 @@ private:
     void stepMachine(stateMachine&, char);
     //转移字符翻译成转移条件
     condition CharToCondition(char);
+};*/
+
+
+class HtmlParser{
+public:
+    //传入一个网页内容，进行Url分析
+    void parsePage(Page page);
+    //获取网页上获得的所有Url
+    queue<Url> getPageUrls();
+
+private:
+    //当前页面的url
+    Url url;
+    // 当前页面的content
+    string content;
+
+    //页面中出现的所有url
+    queue<Url> urls;
 };
 
 
