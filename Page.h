@@ -16,7 +16,7 @@ public:
     Url getUrl();
     string getContent();
 
-    vector<string> getSubUrls();
+    vector<Url> getSubUrls();
 
 private:
     Url url;

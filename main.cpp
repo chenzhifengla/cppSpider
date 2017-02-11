@@ -28,26 +28,26 @@ int main(){
         // 弹出一个url
         url = url_queue.front();
         url_queue.pop();
-        cout << url.getUrl();
+        cout << "visit " << url.getUrl() << endl;
 
         // 爬取该url
         if (!crawler.crawlPage(url)) {
-            cout << " visit failed" << endl;
+            cout << "\t" << url.getUrl() << " visit failed" << endl;
         } else {
-            cout << endl;
             page = crawler.getPage();
         }
-        // 该url已访问
-        url_set.insert(url);
+
         // 获得页面上所有url
-        vector<string> suburls = page.getSubUrls();
-        if (suburls.empty()) {
-            cout << "this page has no sub url" << endl;
-        }
+        vector<Url> suburls = page.getSubUrls();
+        cout << "\tsub urls:" << endl;
         // 只要未出现过则加入url队列
-        for (string &suburl : suburls) {
-            if (url_set.find(suburl) == url_set.end() && suburl.find("yingzinanfei.com") != string::npos) {
+        for (Url &suburl : suburls) {
+            if (url_set.find(suburl) == url_set.end() && suburl.getHost() == "www.yingzinanfei.com") {
+                // 添加到队列中
                 url_queue.emplace(suburl);
+                // 添加到集合中
+                url_set.insert(suburl);
+                cout << "\t\t" << suburl << endl;
             }
         }
     }
