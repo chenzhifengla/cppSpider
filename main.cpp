@@ -11,7 +11,8 @@ using namespace std;
 int main(){
     //生成一个初始Url
     //Url url("http://www.yingzinanfei.com/2016/10/08/centosfanghuoqiangjiandancaozuo/");
-    Url url("http://bbs.byr.cn");
+    Url url("http://www.yingzinanfei.com");
+    //Url url("http://bbs.byr.cn");
 
     // url集合
     set<Url> url_set;
@@ -27,11 +28,13 @@ int main(){
         // 弹出一个url
         url = url_queue.front();
         url_queue.pop();
+        cout << url.getUrl();
+
         // 爬取该url
         if (!crawler.crawlPage(url)) {
-            cout << url.getUrl() << " visit failed" << endl;
+            cout << " visit failed" << endl;
         } else {
-            cout << url.getUrl() << " visit success" << endl;
+            cout << endl;
             page = crawler.getPage();
         }
         // 该url已访问
@@ -43,7 +46,7 @@ int main(){
         }
         // 只要未出现过则加入url队列
         for (string &suburl : suburls) {
-            if (url_set.find(suburl) == url_set.end() && suburl.find("bbs.byr.cn") != string::npos) {
+            if (url_set.find(suburl) == url_set.end() && suburl.find("yingzinanfei.com") != string::npos) {
                 url_queue.emplace(suburl);
             }
         }
