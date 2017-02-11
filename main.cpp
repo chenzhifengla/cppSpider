@@ -42,7 +42,7 @@ int main(){
         cout << "\tsub urls:" << endl;
         // 只要未出现过则加入url队列
         for (Url &suburl : suburls) {
-            if (url_set.find(suburl) == url_set.end() && suburl.getHost() == "www.baidu.com") {
+            if (url_set.find(suburl) == url_set.end() && suburl.getHost() == "www.yingzinanfei.com") {
                 // 添加到队列中
                 url_queue.emplace(suburl);
                 // 添加到集合中
