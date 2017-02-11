@@ -2,6 +2,7 @@
 // Created by yingzi on 2016/11/25.
 //
 
+#include <unistd.h>
 #include "Crawler.h"
 
 bool Crawler::crawlPage(Url url) {
@@ -14,8 +15,11 @@ bool Crawler::crawlPage(Url url) {
         cout << "cannot deal other protocol now" << endl;
         return false;
     }
-    //最后接收网站返回的数据
-    return recvPageResponse();
+    // 接收网站返回的数据
+    if (!(recvPageResponse())) return false;
+    // 关闭套接字
+    close(client);
+    return true;
 }
 
 bool Crawler::connectPage() {
