@@ -6,6 +6,7 @@
 #define CPPSPIDER_PAGE_H
 #include "Url.h"
 #include <string>
+#include <vector>
 
 class Page {
 public:
@@ -14,6 +15,8 @@ public:
 
     Url getUrl();
     string getContent();
+
+    vector<string> getSubUrls();
 
 private:
     Url url;

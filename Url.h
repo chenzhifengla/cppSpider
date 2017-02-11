@@ -17,15 +17,34 @@ public:
     //拷贝构造函数
     //Url(const Url& url2);
 
-    //获取Url中的host
+    string getUrl();
+
+    string getFormatUrl();
+
+    string getProtocol();
     string getHost();
-    //获取Url中的path
+
+    int getPort();
     string getPath();
 
-private:
-    string host;
-    string path;
-};
+    friend ostream &operator<<(ostream &os, Url &url) {
+        os << url.getUrl();
+        return os;
+    }
 
+    bool operator<(const Url &url) const {
+        if (host != url.host) return host < url.host;
+        else return path < url.path;
+    }
+
+private:
+    string url;
+    string protocol;
+    string host;
+    int port;
+    string path;
+
+    void initUrl();
+};
 
 #endif //CPPSPIDER_URL_H
