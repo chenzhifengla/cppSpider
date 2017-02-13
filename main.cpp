@@ -48,7 +48,8 @@ int main(int argc, char **argv) {
         cout << "\tsub urls:" << endl;
         // 只要未出现过则加入url队列
         for (Url &suburl : suburls) {
-            if (url_set.find(suburl) == url_set.end() && suburl.getHost() == "www.yingzinanfei.com") {
+            if (url_set.find(suburl) == url_set.end() && suburl.getUrl().size() >= url_prefix.size() &&
+                equal(url_prefix.begin(), url_prefix.end(), suburl.getUrl().begin())) {
                 // 添加到队列中
                 url_queue.emplace(suburl);
                 // 添加到集合中
