@@ -8,11 +8,17 @@
 #include "Crawler.h"
 using namespace std;
 
-int main(){
-    //生成一个初始Url
-    //Url url("http://www.yingzinanfei.com/2016/10/08/centosfanghuoqiangjiandancaozuo/");
-    Url url("http://www.yingzinanfei.com");
-    //Url url("http://bbs.byr.cn");
+int main(int argc, char **argv) {
+
+    if (argc != 3) {
+        cout << "Usage: " << argv[0] << " entry_url url_prefix" << endl;
+        return 1;
+    }
+
+    // 入口url
+    Url url(argv[1]);
+    // 限定范围的website
+    string url_prefix(argv[2]);
 
     // url集合
     set<Url> url_set;
