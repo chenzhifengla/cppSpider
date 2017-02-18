@@ -6,6 +6,7 @@
 #include <queue>
 #include "Url.h"
 #include "Crawler.h"
+#include "ThreadSafeQueue.h"
 using namespace std;
 
 int main(int argc, char **argv) {
